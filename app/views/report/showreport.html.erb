@@ -1,0 +1,135 @@
+<html>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag  "application" %>
+<%= form_tag( '/reports', :method => :get,:id => 'dateform' ) do%>
+<br>
+<br>
+<br>
+
+<br>
+<left><label>Controller ID:</label> <input type="text" id="controllerid" name="controllerid" style="width:150px" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label>From Date:</label> <input  type="text" id="fromdate" name="fromdate" style="width:150px"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label>To Date:</label> <input type="text" id="todate" name="todate" style="width:150px" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <button id="search"  type="button" style="width:150px">Search</button> </left>
+
+  <%end%>
+
+<br/>
+
+<script>
+ $(function(){
+      $("#fromdate").datepicker({
+         dateFormat: 'yy/mm/dd',
+        
+       onSelect: function(dateText) {
+       
+      }
+   });
+});
+ 
+
+ $(function(){
+      $("#todate").datepicker({
+         dateFormat: 'yy/mm/dd',
+         onSelect: function(dateText) {
+         
+       }
+   });
+});
+
+$(
+    function(){
+     
+        $('#search').click(function(){
+                               
+                   $("#dateform").submit();  
+        });
+        
+    }
+);
+
+</script>
+<table id="table_id" 
+
+class="table table-condensed table-striped table-hover" border="1" >
+    <thead>
+        <tr>
+<th>controllerID </th>
+<th>Updated_date </th>
+<th>Updated_time </th>
+<th>Uid </th>
+<th>Generator_RPM </th>
+<th>Dc_Bus_Voltage </th>
+<th>Voltage_RPhase </th>
+<th>Voltage_YPhase </th>
+<th>Voltage_BPhase </th>
+<th>VFD_Frequency </th>
+<th>VFD_Current  </th>
+<th>Current_RPhase  </th>
+<th>Current_YPhase  </th>
+<th>Current_BPhase </th>
+<th>Wind_Speed </th>
+<th>Turbine_RPM </th>
+<th>Current_Kilowatt </th>
+<th>Power_Factor </th>
+<th>Cur_Frequency </th>
+<th>kwh_Import </th>
+<th>kwh_Export </th>
+<th>kvah_Import </th>
+<th>kvah_Export	</th>
+<th>kvarh_Import</th>
+<th>kvarh_Export</th>
+<th>status</th>
+<th>fault</th>
+<th>RD_WR_index</th>
+</tr>
+    </thead>
+
+    <% @periodic_data_tbl.each do |val| %>
+<tr>
+<td><%= "#{val['ctrlrid']}" %></td>
+<td ><%= "#{val['updated_date']}" %></td>
+<td><%= "#{val['updated_time'].strftime("%H:%M:%S")}" %></td>
+<td> <%= "#{val['uid']}" %></td>
+<td><%= "#{val['wtvalue1']}" %></td>
+<td><%= "#{val['wtvalue2']}" %></td>
+<td><%= "#{val['wtvalue3']}" %></td>
+<td><%= "#{val['wtvalue4']}" %></td>
+<td><%= "#{val['wtvalue5']}" %></td>
+<td><%= "#{val['wtvalue6']}" %></td>
+<td><%= "#{val['wtvalue7']}" %></td>
+<td><%= "#{val['wtvalue8']}" %></td>
+<td><%= "#{val['wtvalue9']}" %></td>
+<td><%= "#{val['wtvalue10']}" %></td>
+<td><%= "#{val['wtvalue11']}" %></td>
+<td><%= "#{val['wtvalue12']}" %></td>
+<td><%= "#{val['wtvalue13']}" %></td>
+<td><%= "#{val['wtvalue14']}" %></td>
+<td><%= "#{val['wtvalue15']}" %></td>
+<td><%= "#{val['wtvalue16']}" %></td>
+<td><%= "#{val['wtvalue17']}" %></td>
+<td><%= "#{val['wtvalue18']}" %></td>
+<td><%= "#{val['wtvalue19']}" %></td>
+<td><%= "#{val['wtvalue20']}" %></td>
+<td><%= "#{val['wtvalue21']}" %></td>
+<td><%= "#{val['status1']}" %></td>
+<td><%= "#{val['fault']}" %></td>
+<td><%= "#{val['RD_WR_index']}" %></td>
+
+</tr>
+<% end %>
+
+</table>
+
+<script type="text/javascript">
+  
+        $('#table_id').DataTable(
+{
+        "scrollX": true,
+"scrollY": true
+}
+    
+);
+  
+</script>
+</html>

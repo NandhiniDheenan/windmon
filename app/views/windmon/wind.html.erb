@@ -1,0 +1,12 @@
+
+<% if @request_type=='periodic' %>
+<h4> SERVER_TIME:<%= Time.now.strftime("%Y/%m/%d %H:%M:%S") %>*RMONRES1 RMONSUCCESS</h4>
+<% end %>
+<% if @request_type=='config' %>
+<h4>SERVER_TIME: <%= Time.now.strftime("%Y/%m/%d %H:%M:%S") %>*RMONRES4 RMONSUCCESS </h4>
+<% end %>
+<% if @request_type=='check' %>
+<h4>SERVER_TIME:<%=Time.now.strftime("%Y/%m/%d %H:%M:%S")%>*RMONRES3 RMONSUCCESS</h4>
+<% end %>
+
+

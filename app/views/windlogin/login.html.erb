@@ -1,0 +1,34 @@
+<html>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<head>
+</head>
+<br>
+<center><h1>WIND MONITORING SYSTEM</h1></center>
+<br>
+<body>
+<div class="title">
+<h1></h1>
+</div>
+<div class="imagebox">
+<%= image_tag("solar_wind.jpg", class: "tower") %>
+<h3></h3>
+</div>
+<%= form_tag( '/login', :method => :get) do%>
+<div class="loginBox">
+<%= image_tag("user.jpg", class: "user") %>
+<h2>Log In Here</h2>
+<form>
+<p>Email</p>
+<input type="text" id="username" name="username" placeholder="Enter Email">
+<p>Password</p>
+<input type="password" id="password" name="password" placeholder="********">
+<input type="submit" name="" value="Sign In">
+<a href="#">Forget Password </a>
+  <%end%>
+</form>
+</body>
+</html>
+
+
+
